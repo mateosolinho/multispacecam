@@ -76,6 +76,9 @@ main {
 .grid-item {
   background-color: #333;
   border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  min-height: 180px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -104,6 +107,17 @@ iframe {
   justify-content: center;
   align-items: center;
   z-index: 1;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.info-btn:hover {
+  background-color: #1a8cdb;
+  transform: scale(1.1);
+}
+
+.info-btn:active {
+  transform: scale(0.95);
 }
 
 /* Estilos para el modal */
@@ -126,7 +140,7 @@ iframe {
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
-  max-width: 500px;
+  max-width: 900px;
   margin: auto;
   border-radius: 10px;
 }
@@ -138,6 +152,55 @@ iframe {
 
 .modal-content a:hover {
   text-decoration: underline;
+}
+
+.modal-tabs {
+  display: flex;
+  flex-direction: column;
+  max-height: 85vh;
+  overflow: hidden;
+}
+
+.tabs-header {
+  display: flex;
+  border-bottom: 2px solid #1da1f2;
+  margin-bottom: 20px;
+  gap: 0;
+}
+
+.tab-btn {
+  padding: 12px 24px;
+  background-color: #222;
+  color: #aaa;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  transition: all 0.3s;
+  font-size: 0.95rem;
+}
+
+.tab-btn:hover {
+  color: #fff;
+  background-color: #2a2a2a;
+}
+
+.tab-btn.active {
+  color: #1da1f2;
+  border-bottom-color: #1da1f2;
+  background-color: transparent;
+}
+
+.tab-content {
+  display: none;
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 10px;
+}
+
+.tab-content.active {
+  display: block;
 }
 
 .close-btn {
@@ -153,4 +216,287 @@ iframe {
   color: #fff;
   text-decoration: none;
   cursor: pointer;
+}
+
+.camera-name-overlay {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  border-radius: 3px;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+
+/* ========== ADMIN BUTTON ========== */
+/* Estilos de admin ahora dentro del modal unificado */
+
+/* ========== ADMIN MODAL ========== */
+.admin-modal-content {
+  width: 90%;
+  max-width: 900px;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 20px;
+  background-color: #222;
+  border: 1px solid #888;
+  border-radius: 10px;
+  margin: auto;
+}
+
+.admin-modal-content h2 {
+  margin-top: 0;
+  border-bottom: 2px solid #1da1f2;
+  padding-bottom: 10px;
+}
+
+.admin-subtitle {
+  color: #aaa;
+  margin: 10px 0 20px 0;
+  font-size: 0.9rem;
+}
+
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.admin-form-grid label {
+  grid-column: 1;
+  align-self: center;
+  color: #ccc;
+  white-space: nowrap;
+}
+
+.admin-form-grid label:nth-of-type(2) {
+  display: none;
+}
+
+.admin-form-grid input {
+  grid-column: 2;
+  padding: 8px 12px;
+  background-color: #333;
+  border: 1px solid #555;
+  border-radius: 5px;
+  color: #fff;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.admin-form-grid input:nth-of-type(2) {
+  display: none;
+}
+
+.admin-form-grid label.show-confirm {
+  display: block;
+}
+
+.admin-form-grid input.show-confirm {
+  display: block;
+}
+
+.admin-form-grid input:focus {
+  outline: none;
+  border-color: #1da1f2;
+  box-shadow: 0 0 5px rgba(29, 161, 242, 0.5);
+}
+
+.admin-primary-btn,
+.admin-secondary-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.admin-primary-btn {
+  background-color: #1da1f2;
+  color: white;
+}
+
+.admin-primary-btn:hover {
+  background-color: #1a8cdb;
+}
+
+.admin-secondary-btn {
+  background-color: #555;
+  color: white;
+}
+
+.admin-secondary-btn:hover {
+  background-color: #666;
+}
+
+.admin-danger-btn {
+  background-color: #ff6b6b;
+}
+
+.admin-danger-btn:hover {
+  background-color: #ff5252;
+}
+
+.admin-toolbar {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.admin-toolbar label {
+  color: #ccc;
+}
+
+.admin-toolbar select {
+  padding: 8px 12px;
+  background-color: #333;
+  border: 1px solid #555;
+  border-radius: 5px;
+  color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.admin-streams-list {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 20px 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.admin-stream-item {
+  margin-bottom: 8px;
+}
+
+.admin-stream-item:last-child {
+  margin-bottom: 0;
+}
+
+.stream-item-content {
+  display: grid;
+  grid-template-columns: 40px 1fr 2fr auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.stream-inputs {
+  display: contents;
+}
+
+.admin-stream-name {
+  padding: 8px 12px;
+  background-color: #333;
+  border: 1px solid #555;
+  border-radius: 5px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.9rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.admin-stream-input {
+  padding: 8px 12px;
+  background-color: #333;
+  border: 1px solid #555;
+  border-radius: 5px;
+  color: #fff;
+  font-family: monospace;
+  font-size: 0.8rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.admin-stream-input:focus {
+  outline: none;
+  border-color: #1da1f2;
+  box-shadow: 0 0 5px rgba(29, 161, 242, 0.5);
+}
+
+.admin-remove-btn {
+  padding: 6px 12px;
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.3s;
+}
+
+.admin-remove-btn:hover {
+  background-color: #ff5252;
+}
+
+.status-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.status-ok {
+  background-color: #51cf66;
+  color: #1a1a1a;
+}
+
+.status-error {
+  background-color: #ff6b6b;
+  color: #fff;
+}
+
+.status-loading {
+  background-color: #ffd43b;
+  color: #1a1a1a;
+}
+
+.admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  gap: 10px;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+}
+
+.admin-message {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.admin-hidden {
+  display: none;
+}
+
+#adminAuthSection {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #333;
+}
+
+#adminManagerSection {
+  padding-top: 10px;
 }

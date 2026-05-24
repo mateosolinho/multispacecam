@@ -1,0 +1,26 @@
+# Local environment
+.env
+.env.local
+settings.local.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node (if ever needed)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Logs
+*.log
+
+# Local memory/cache (Claude)
+.claude/
